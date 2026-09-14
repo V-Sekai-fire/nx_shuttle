@@ -235,11 +235,6 @@ defmodule NxShuttle.HailoRoute do
   defp pattern_for("HardSigmoid"), do: {"Hard-swish (preview)", ~w(Mul HardSigmoid), :untested}
   defp pattern_for("Softplus"), do: {"Mish", ~w(Mul Tanh Softplus), :untested}
 
-  defp negation_of("LessOrEqual"), do: "Greater"
-  defp negation_of("GreaterOrEqual"), do: "Less"
-  defp negation_of("Not"), do: :operand
-  defp negation_of("NotEqual"), do: "Equal"
-
   # The ratio the quantizer has to cover. It is the OUTPUT span that matters, which for Exp is
   # e^hi / e^lo -- an input interval of five spans a factor of 148.
   defp exp_span_ratio(lo, hi), do: :math.exp(hi) / :math.exp(lo)
